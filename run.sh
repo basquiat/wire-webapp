@@ -1,19 +1,11 @@
 #!/usr/bin/env bash
-set -eo pipefail
 
-case $1 in
-  start)
-    # The '| cat' is to trick Node that this is an non-TTY terminal
-    # then react-scripts won't clear the console.
-    yarn start | cat
-    ;;
-  build)
-    yarn build
-    ;;
-  test)
-    yarn test $@
-    ;;
-  *)
-    exec "$@"
-    ;;
-esac
+hosthttps=${HOSTHTTPS:-'staging-nginz-https.zinfra.io'}
+hostssl=${HOSTSSL:-'staging-nginz-ssl.zinfra.io'}
+
+echo "Running the webapp pointing at: ${hosthttps} and ${hostssl}"
+
+find /src/aws/static/min -type f -exec sed -i "s/staging-nginz-https.zinfra.io/$hosthttps/g" {} \;
+find /src/aws/static/min -type f -exec sed -i "s/staging-nginz-ssl.zinfra.io/$hostssl/g" {} \;
+
+cd /src/aws && python application.py
