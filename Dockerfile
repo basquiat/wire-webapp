@@ -27,4 +27,4 @@ RUN pip install -r requirements.txt
 ENV HOSTHTTPS staging-nginz-https.zinfra.io
 ENV HOSTSSL staging-nginz-ssl.zinfra.io
 
-ENTRYPOINT ["/bin/bash", "/src/run.sh"]
+ENTRYPOINT ["dumb-init", "--", "/bin/bash", "/src/run.sh"]
