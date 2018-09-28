@@ -31,32 +31,51 @@ z.user.UserError = class UserError extends Error {
     this.type = type || UserError.TYPE.UNKNOWN;
 
     switch (this.type) {
-      case UserError.TYPE.INVALID_UPDATE:
+      case UserError.TYPE.INVALID_UPDATE: {
         this.message = 'False input data for requested update';
         break;
-      case UserError.TYPE.PRE_KEY_NOT_FOUND:
+      }
+
+      case UserError.TYPE.MISSING_PARAMETER: {
+        this.message = 'Required parameter is not defined';
+        break;
+      }
+
+      case UserError.TYPE.PRE_KEY_NOT_FOUND: {
         this.message = 'Pre-key not found';
         break;
-      case UserError.TYPE.REQUEST_FAILURE:
+      }
+
+      case UserError.TYPE.REQUEST_FAILURE: {
         this.message = 'User related backend request failure';
         break;
-      case UserError.TYPE.USER_MISSING_EMAIL:
+      }
+
+      case UserError.TYPE.USER_MISSING_EMAIL: {
         this.message = 'Self user has not set email address';
         break;
-      case UserError.TYPE.USER_NOT_FOUND:
+      }
+
+      case UserError.TYPE.USER_NOT_FOUND: {
         this.message = 'User not found';
         break;
-      case UserError.TYPE.USERNAME_TAKEN:
+      }
+
+      case UserError.TYPE.USERNAME_TAKEN: {
         this.message = 'Username is already taken';
         break;
-      default:
+      }
+
+      default: {
         this.message = 'Unknown UserError';
+      }
     }
   }
 
   static get TYPE() {
     return {
       INVALID_UPDATE: 'UserError.TYPE.INVALID_UPDATE',
+      MISSING_PARAMETER: 'UserError.TYPE.MISSING_PARAMETER',
       PRE_KEY_NOT_FOUND: 'UserError.TYPE.PRE_KEY_NOT_FOUND',
       REQUEST_FAILURE: 'UserError.TYPE.REQUEST_FAILURE',
       UNKNOWN: 'UserError.TYPE.UNKNOWN',
