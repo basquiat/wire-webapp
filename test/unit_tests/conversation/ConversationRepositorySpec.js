@@ -732,7 +732,7 @@ describe('ConversationRepository', () => {
       beforeEach(() => {
         spyOn(TestFactory.conversation_repository, '_onMemberJoin').and.callThrough();
         spyOn(TestFactory.conversation_repository, 'updateParticipatingUserEntities').and.callThrough();
-        spyOn(TestFactory.user_repository, 'get_user_by_id').and.returnValue(Promise.resolve());
+        spyOn(TestFactory.user_repository, 'get_users_by_id').and.returnValue(Promise.resolve());
 
         memberJoinEvent = {
           conversation: conversation_et.id,
