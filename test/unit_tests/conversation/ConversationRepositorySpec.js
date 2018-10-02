@@ -737,7 +737,7 @@ describe('ConversationRepository', () => {
         memberJoinEvent = {
           conversation: conversation_et.id,
           data: {
-            user_ids: '9028624e-bfef-490a-ba61-01683f5ccc83',
+            user_ids: ['9028624e-bfef-490a-ba61-01683f5ccc83'],
           },
           from: 'd5a39ffb-6ce3-4cc8-9048-0e15d031b4c5',
           id: '3.800122000a5dcd58',
